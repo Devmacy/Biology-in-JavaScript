@@ -4,8 +4,8 @@
       设置初代基因频率
       <br>
       A1A1:<input type="number" v-model="A1A1"/> <br>
-      A2A2:<input type="number" v-model="A2A2"/> <br>
       A1A2:<input type="number" v-model="A1A2"/> <br>
+      A2A2:<input type="number" v-model="A2A2"/> <br>
     </div>
 
     <div>
@@ -25,10 +25,10 @@
       A1A1:{{ A1A1 }}
     </div>
     <div>
-      A2A2:{{ A1A1 }}
+      A1A2:{{ A1A2 }}
     </div>
     <div>
-      A1A2:{{ A1A2 }}
+      A2A2:{{ A2A2 }}
     </div>
   </div>
 
@@ -55,9 +55,14 @@ const generateNext = () => {
   ++generation.value;
   let left = A1.value;
   let right = A2.value;
-  A1A1.value = left * left;
-  A2A2.value = right * right;
-  A1A2.value = 2 * left * right;
+  A1A1.value = roundNumber(left * left, 3);
+  A2A2.value = roundNumber(right * right, 3);
+  A1A2.value = roundNumber(2 * left * right, 3);
+}
+
+const roundNumber = (num, decimals = 1) => {
+  const shifter = Math.pow(10, decimals)
+  return Math.round(num * shifter) / shifter
 }
 </script>
 

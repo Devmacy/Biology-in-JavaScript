@@ -1,9 +1,13 @@
 <script setup>
 import HardyWeinberg from "./components/HardyWeinberg.vue";
+import CoinFlip from "./components/CoinFlip.vue";
 </script>
 
 <template>
   <HardyWeinberg></HardyWeinberg>
+  <div style="border-top:10px solid #59207a;margin: 5px 0"></div>
+
+  <coin-flip></coin-flip>
 </template>
 
 <style scoped>
