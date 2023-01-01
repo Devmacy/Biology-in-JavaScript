@@ -1,6 +1,6 @@
 <template>
   <div>
-    输入循环次数：<input type="number" v-model="loopTimes"/>
+    输入循环次数：<input type="number" v-model="loopTimes" max="100000"/>
     <br>
     <button style="background: #646cff;color: #f9f9f9" @click="setRandomNumber(loopTimes)">生成</button>
     <br>
@@ -23,7 +23,7 @@ let randomNumList = ref([])
 // 定义总和
 let sumRandomNum = ref(0)
 
-watch(loopTimes, (cur, prev) => {
+watch(loopTimes, () => {
   randomNumList.value = []
   sumRandomNum.value = 0
 })
@@ -33,6 +33,9 @@ watch(loopTimes, (cur, prev) => {
  * @param loopTimes 次数
  */
 const setRandomNumber = (loopTimes = 0) => {
+  if(loopTimes > 100000 ){
+    return
+  }
   const times = Math.round(loopTimes)
   for (let i = 0; i < times; i++) {
     const num = Math.random()
